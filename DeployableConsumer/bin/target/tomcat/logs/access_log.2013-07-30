@@ -1,0 +1,6 @@
+127.0.0.1 - - [30/Jul/2013:16:48:48 -0300] "POST /jaxrs-service/hello/jsonBean HTTP/1.1" 200 42 http-bio-52512-exec-1 339
+127.0.0.1 - - [30/Jul/2013:16:48:48 -0300] "GET /jaxrs-service/hello/echo/SierraTangoNevada HTTP/1.1" 200 17 http-bio-52512-exec-3 10
+127.0.0.1 - - [30/Jul/2013:17:02:42 -0300] "POST /jaxrs-service/hello/jsonBean HTTP/1.1" 200 42 http-bio-52280-exec-1 341
+127.0.0.1 - - [30/Jul/2013:17:02:42 -0300] "GET /jaxrs-service/hello/echo/SierraTangoNevada HTTP/1.1" 200 17 http-bio-52280-exec-3 12
+127.0.0.1 - - [30/Jul/2013:17:19:48 -0300] "POST /jaxrs-service/hello/jsonBean HTTP/1.1" 404 - http-bio-46776-exec-1 112
+127.0.0.1 - - [30/Jul/2013:17:19:48 -0300] "GET /jaxrs-service/hello/echo/SierraTangoNevada HTTP/1.1" 404 - http-bio-46776-exec-2 6
