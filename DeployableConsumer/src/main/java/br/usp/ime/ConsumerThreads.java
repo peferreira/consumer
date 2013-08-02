@@ -1,7 +1,11 @@
 package br.usp.ime;
 
+import javax.jws.WebParam;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -27,14 +31,21 @@ public class ConsumerThreads {
 		return status();
 	}
 
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	@Path("/enable")
+	public String enable4() {
+		return enable("4");
+	}
 	
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
-	@Path(value = "/enable")
-	public String enable() {
+	@Path("/enable/{id}")
+	public String enable(@PathParam("id") String id) {
 		Thread t;
+		int numThreads = Integer.parseInt(id);
 		monitor.setTrue();
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < numThreads; i++) {
 			t = new Thread(new RunWhileTrue(monitor));
 			t.start();
 		}

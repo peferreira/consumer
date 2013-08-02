@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="6.203" errors="0" skipped="0" tests="1" name="br.usp.ime.ConsumerThreadsTest">
+<testsuite failures="0" time="1.237" errors="0" skipped="0" tests="3" name="br.usp.ime.ConsumerThreadsTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/share/java/jdk1.7.0_21/jre/lib/i386"/>
@@ -14,7 +14,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/home/workstation/Documents/projects/DeployableConsumer"/>
+    <property name="user.dir" value="/home/workstation/Documents/git/consumer/DeployableConsumer"/>
     <property name="java.runtime.version" value="1.7.0_21-b11"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="/usr/share/java/jdk1.7.0_21/jre/lib/endorsed"/>
@@ -59,5 +59,7 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.252" classname="br.usp.ime.ConsumerThreadsTest" name="testStatusOnStartShouldReturnFalse"/>
+  <testcase time="0.506" classname="br.usp.ime.ConsumerThreadsTest" name="statusShouldBeTrueAfterEnable"/>
+  <testcase time="0.034" classname="br.usp.ime.ConsumerThreadsTest" name="statusShouldBeFalseAfterDisable"/>
+  <testcase time="0.02" classname="br.usp.ime.ConsumerThreadsTest" name="initialStatusShouldBeFalse"/>
 </testsuite>

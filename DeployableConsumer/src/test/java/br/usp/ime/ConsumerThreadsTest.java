@@ -5,49 +5,54 @@ import static org.junit.Assert.assertEquals;
 import org.apache.cxf.endpoint.Server;
 import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
 import org.apache.cxf.jaxrs.client.WebClient;
+import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class ConsumerThreadsTest {
 	private static String ENDPOINT = "http://localhost:8080/DeployableConsumer/";
-	private static Server server;
+	private Server server;
+	private static WebClient client;
 
+	
 	@BeforeClass
-	public static void beforeClass() {
+	public static void initialize() {
+		client = WebClient.create(ENDPOINT + "threads/");
+	}
+	
+	@Before 
+	public void startServer() {
 		JAXRSServerFactoryBean sf = new JAXRSServerFactoryBean();
 		sf.setResourceClasses(ConsumerThreads.class);
 		sf.setAddress(ENDPOINT);
 		server = sf.create();
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 	}
-
-	@AfterClass
-	public static void afterClass() throws Exception {
+	
+	@After 
+	public void stopServer() {
 		server.stop();
 		server.destroy();
 	}
 
 	@Test
-	public void testStatusOnStartShouldReturnFalse() {
-		WebClient client = WebClient.create(ENDPOINT + "threads/");
-
+	public void initialStatusShouldBeFalse() {
 		client.path(ENDPOINT + "threads/status");
 		String actual = client.accept("text/plain").get(String.class);
 		assertEquals("false", actual);
-
+	}
+	@Test
+	public void statusShouldBeTrueAfterEnable() {
 		client.path(ENDPOINT + "threads/enable");
-		actual = client.get(String.class);
+		String actual = client.accept("text/plain").get(String.class);
 		assertEquals("true", actual);
-
-		client.path(ENDPOINT + "threads/disable");
-		actual = client.get(String.class);
+	}
+	
+	@Test
+	public void  statusShouldBeFalseAfterDisable() {
+     	client.path(ENDPOINT + "threads/disable");
+		String actual = client.accept("text/plain").get(String.class);
 		assertEquals("false", actual);
 	}
 }

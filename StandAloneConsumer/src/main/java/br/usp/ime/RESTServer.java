@@ -21,9 +21,9 @@ public class RESTServer implements Runnable {
     /**
      * 
      * @param name
-     *            ex: DeploymentManager
+     *            ex: CPUConsumer
      * @param url
-     *            ex: http://localhost:9100/deploymentmanager/
+     *            ex: http://localhost:9100/CPUConsumer/
      * @param classes
      *            the classes with the JAXRS annotations
      */
